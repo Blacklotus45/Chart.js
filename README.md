@@ -53,3 +53,5 @@ Thanks to [BrowserStack](https://browserstack.com) for allowing our team to test
 ## License
 
 Chart.js is available under the [MIT license](http://opensource.org/licenses/MIT).
+
+

@@ -83,7 +83,8 @@ module.exports = function(Chart) {
 				return;
 			}
 
-			var center = element.getCenterPoint();
+		    //var center = element.getCenterPoint();
+			var center = element.getReverseCenterPoint();
 			var distance = distanceMetric(position, center);
 
 			if (distance < minDistance) {

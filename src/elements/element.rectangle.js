@@ -192,19 +192,6 @@ module.exports = function(Chart) {
 
 			return {x: x, y: y};
 		},
-		getReverseCenterPoint: function () {
-		    var vm = this._view;
-		    var x, y;
-		    if (isVertical(this)) {
-		        x = vm.x;
-		        y = (vm.y + vm.base) / 2;
-		    } else {
-		        x = (vm.x + vm.base) / 2;
-		        y = vm.y;
-		    }
-
-		    return { y: y, x: x};
-		},
 		getArea: function() {
 			var vm = this._view;
 			return vm.width * Math.abs(vm.y - vm.base);

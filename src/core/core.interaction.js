@@ -83,8 +83,7 @@ module.exports = function(Chart) {
 				return;
 			}
 
-		    //var center = element.getCenterPoint();
-			var center = element.getReverseCenterPoint();
+			var center = element.getCenterPoint();
 			var distance = distanceMetric(position, center);
 
 			if (distance < minDistance) {
@@ -102,7 +101,7 @@ module.exports = function(Chart) {
 	function indexMode(chart, e, options) {
 		var position = getRelativePosition(e, chart);
 		var distanceMetric = function(pt1, pt2) {
-			return Math.abs(pt1.x - pt2.x);
+			return Math.abs(pt1.y - pt2.y);
 		};
 		var items = options.intersect ? getIntersectItems(chart, position) : getNearestItems(chart, position, false, distanceMetric);
 		var elements = [];

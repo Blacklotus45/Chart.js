@@ -192,6 +192,9 @@ module.exports = function(Chart) {
 
 			return {x: x, y: y};
 		},
+		isHorizontal: function() {
+			return !isVertical(this);
+		},
 		getArea: function() {
 			var vm = this._view;
 			return vm.width * Math.abs(vm.y - vm.base);

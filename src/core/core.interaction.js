@@ -84,22 +84,12 @@ module.exports = function(Chart) {
 			}
 
 			var center = element.getCenterPoint();
-			if (!element.isVertical(element)) {
-			    var revPos;
-			    revPos.x = position.y;
-			    revPos.y = position.x;
-
-			    var revCent;
-			    revCent.x = center.y;
-			    revCent.y = center.x;
-
-			    var distance = distanceMetric(revPos, revCent);
+			if (element.isHorizontal()) {
+			    var distance = distanceMetric(position, center, false);
 			}
 			else {
-			    var distance = distanceMetric(position, center);
+			    var distance = distanceMetric(position, center, true);
 			}
-			
-
 			if (distance < minDistance) {
 				nearestItems = [element];
 				minDistance = distance;
@@ -114,8 +104,13 @@ module.exports = function(Chart) {
 
 	function indexMode(chart, e, options) {
 		var position = getRelativePosition(e, chart);
-		var distanceMetric = function(pt1, pt2) {
-			return Math.abs(pt1.x - pt2.x);
+		var distanceMetric = function(pt1, pt2, vertical) {
+			if(vertical){
+				return Math.abs(pt1.x - pt2.x);
+			}
+			else{
+				return Math.abs(pt1.y - pt2.y);
+			}
 		};
 		var items = options.intersect ? getIntersectItems(chart, position) : getNearestItems(chart, position, false, distanceMetric);
 		var elements = [];
